@@ -70,11 +70,12 @@
             <div id="particles"></div>
             <!--Social Media Links-->
             <div class="social-media-links">
-                <a href="#"><img src="images/instagram logo.png" class="social-media"
-                        alt="instagram-logo"></a><!--Your instagram homepage link inser in place of "#"-->
-                <a href="#"><img src="images/facebook logo.png" class="social-media" alt="facebook-logo"></a>
-                <a href="#"><img src="images/linkedin logo.png" class="social-media" alt="linkedin-logo"></a>
-                <a href="#"><img src="images/twitter logo.png" class="social-media" alt="twitter-logo"></a>
+                <!-- <a href="#"><img src="images/instagram logo.png" class="social-media" -->
+                    <a href="https://github.com/KingDayveed357"><img src="images/github.jfif" class="social-media"
+                        alt="Github"></a><!--Your instagram homepage link inser in place of "#"-->
+                <a href="https://www.facebook.com/david.aniago.186" target="_blank"><img src="images/facebook logo.png" class="social-media" alt="facebook-logo"></a>
+                <a href="#" target="_blank"><img src="images/linkedin logo.png" class="social-media" alt="linkedin-logo"></a>
+                <a href="https://x.com/@Davejs404" target="_blank"><img src="images/twitter logo.png" class="social-media" alt="twitter-logo"></a>
 
             </div>
             <!--Social Media Links end-->
@@ -737,30 +738,30 @@
     </div>
     <script>
         document.getElementById('submit').addEventListener('click', function() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const body = document.getElementById('body').value;
-
-            console.log('Submitting form with data:', { name, email, subject, body });
-
-            fetch('/send-email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name, email, subject, body })
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert('Email sent successfully!');
-                console.log('Response from server:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const subject = document.getElementById('subject').value;
+          const body = document.getElementById('body').value;
+    
+          console.log('Submitting form with data:', { name, email, subject, body });
+    
+          fetch('/send-email', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, subject, body })
+          })
+          .then(response => response.text())
+          .then(data => {
+            alert('Email sent successfully!');
+            console.log('Response from server:', data);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
         });
-    </script>
+      </script>
     <!--all the divisions-->
     <script src="js/jquery.min.js"></script>
     <script src="js/particles.js"></script>

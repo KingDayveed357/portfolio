@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 const path = require('path');
 
-const app = express();
+const app = express(); 
 const port = 3000;
 
 // Middleware
@@ -20,7 +20,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'davidaniago@gmail.com', // replace with your email
-    pass: 'dave...357'  // replace with your app-specific password
+    pass: 'qunm mlqo ahms lstd'  // replace with your app-specific password
   }
 });
 
@@ -32,7 +32,22 @@ app.post('/send-email', (req, res) => {
     from: email,
     to: 'davidaniago@gmail.com',
     subject: subject,
-    text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${body}`
+    html: `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <header style="background-color: #4CAF50; padding: 10px; color: white; text-align: center;">
+          <h1>Contact form</h1>
+        </header>
+        <main style="padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${body}</p>
+        </main>
+        <footer style="text-align: center; padding: 10px; font-size: 0.8em; color: #888;">
+          <p>&copy; ${new Date().getFullYear()} aniago-david.vercel.app</p>
+        </footer>
+      </div>
+    `
   };
 
   console.log('Attempting to send email:', mailOptions);
@@ -41,7 +56,7 @@ app.post('/send-email', (req, res) => {
     if (error) {
       console.error('Error sending email:', error);
       return res.status(500).send(error.toString());
-    } else{
+    } else {
       console.log('Email sent successfully:', info.response);
       res.status(200).send('Email sent: ' + info.response);
     }
@@ -50,7 +65,6 @@ app.post('/send-email', (req, res) => {
 
 // Fallback route for handling 404 errors for non-static files
 app.get('*', (req, res) => {
-  
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
