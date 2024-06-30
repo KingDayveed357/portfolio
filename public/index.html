@@ -738,30 +738,30 @@
     </div>
     <script>
         document.getElementById('submit').addEventListener('click', function() {
-          const name = document.getElementById('name').value;
-          const email = document.getElementById('email').value;
-          const subject = document.getElementById('subject').value;
-          const body = document.getElementById('body').value;
-    
-          console.log('Submitting form with data:', { name, email, subject, body });
-    
-          fetch('/send-email', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, email, subject, body })
-          })
-          .then(response => response.text())
-          .then(data => {
-            alert('Email sent successfully!');
-            console.log('Response from server:', data);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const body = document.getElementById('body').value;
+
+            console.log('Submitting form with data:', { name, email, subject, body });
+
+            fetch('/api/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, subject, body })
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Email sent successfully!');
+                console.log('Response from server:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
-      </script>
+    </script>
     <!--all the divisions-->
     <script src="js/jquery.min.js"></script>
     <script src="js/particles.js"></script>
